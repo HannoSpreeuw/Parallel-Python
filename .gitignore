@@ -1,3 +1,7 @@
 *.o
 *.so
 *.txt
+Christopher_Swenson/
+__pycache__/
+utilities.py
+
