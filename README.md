@@ -11,6 +11,7 @@ Compile and link for pybind11 using
 c++ -Wall -shared -std=c++11 -fPIC `python3 -m pybind11 --includes` test.c -o test_pybind`python3-config --extension-suffix`
 ```
 or add a `-O3` there.
+
 Renaming seems necessary or the library will not be imported:
 ```
 mv test_pybind.cpython-37m-x86_64-linux-gnu.so test_pybind.so
