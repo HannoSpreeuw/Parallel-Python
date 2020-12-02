@@ -2,8 +2,8 @@
 // 
 // #include <pybind11/pybind11.h>
 // namespace py = pybind11;
-// 
-long long test(long long to)
+
+long long conditional_sum_range(long long to)
 {
   long long i;
   long long s = 0LL;
