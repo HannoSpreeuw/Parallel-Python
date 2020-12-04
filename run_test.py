@@ -24,7 +24,7 @@ sum_range = testlib.sum_range
 sum_range.argtypes = [ctypes.c_long]  
 sum_range.restype = ctypes.c_longlong  
 
-iterations=1000000
+iterations=100000
 
  
 if __name__ == '__main__':  

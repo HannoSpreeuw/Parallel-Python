@@ -19,17 +19,17 @@ def sum_range_numba(a: int):
     return x
 
 # testname = ctypes.util.find_library('test')  
-testlib = ctypes.cdll.LoadLibrary(os.getcwd()+"/libtest.so")  
+# testlib = ctypes.cdll.LoadLibrary(os.getcwd()+"/libtest.so")  
 #   
-sum_range = testlib.sum_range
-sum_range.argtypes = [ctypes.c_longlong]  
-sum_range.restype = ctypes.c_longlong  
+# sum_range = testlib.sum_range
+# sum_range.argtypes = [ctypes.c_longlong]  
+# sum_range.restype = ctypes.c_longlong  
 
-# import test_pybind
+import test_pybind
 # add=test_pybind.add
 # print()
 # print("add(1,2) = {}".format(add(1,2)))
-# sum_range=test_pybind.sum_range
+sum_range=test_pybind.sum_range
 
 high=100000000
 high=1000000000
@@ -89,5 +89,5 @@ if __name__ == '__main__':
     end_time = time.time()
     print("Run time for {0} consecutive parallel double calls to the numba function for sum_range in ms: {1:.4f}".format(timeit_number, 1000*(end_time - start_time)))  
     print()
-    print("Run time for {0} consecutive parallel double calls to the numba function for sum_range in ms, as measured by timeit = {1:.4f} ".format(timeit_number, timeit('t1 = T.Thread(target=sum_range_numba, args=(high,));t2 = T.Thread(target=sum_range_numba, args=(high,));t1.start();t2.start();t1.join();t2.join()', globals=globals(), number=timeit_number)))
+    print("Run time for {0} consecutive parallel double calls to the numba function for sum_range in s, as measured by timeit = {1:.4f} ".format(timeit_number, timeit('t1 = T.Thread(target=sum_range_numba, args=(high,));t2 = T.Thread(target=sum_range_numba, args=(high,));t1.start();t2.start();t1.join();t2.join()', globals=globals(), number=timeit_number)))
     print()
