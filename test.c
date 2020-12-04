@@ -21,7 +21,6 @@ int add(int i, int j) {
 
 long long sum_range(long long high)
 {
-  py::gil_scoped_release release;
   long long i;
   long long s = 0LL;
  
@@ -40,5 +39,5 @@ long long sum_range(long long high)
 PYBIND11_MODULE(test_pybind, m) {
     m.doc() = "pybind11 example plugin"; // optional module docstring
 
-    m.def("sum_range", &sum_range, "A function which adds upp numbers from 0 up to and including high-1");
+    m.def("sum_range", &sum_range, "A function which adds upp numbers from 0 up to and including high-1", py::call_guard<py::gil_scoped_release>());
 }
