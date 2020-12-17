@@ -1,6 +1,8 @@
 // #include <stdio.h>
 // 
 #include <pybind11/pybind11.h>
+#include <pybind11/numpy.h>
+
 namespace py = pybind11;
 
 long long conditional_sum_range(long long to)
@@ -30,14 +32,23 @@ long long sum_range(long long high)
   return s;
 }
 
+double square(double x) {
+    return x * x;
+}
 // PYBIND11_MODULE(test_pybind, m) {
 //     m.doc() = "pybind11 example plugin"; // optional module docstring
 // 
 //     m.def("sum_range", &test, "A function which adds up all numbers in a range which are a multiple of 3");
 // }
 // 
+// PYBIND11_MODULE(test_pybind, m) {
+//     m.doc() = "pybind11 example plugin"; // optional module docstring
+// 
+//     m.def("sum_range", &sum_range, "A function which adds upp numbers from 0 up to and including high-1", py::call_guard<py::gil_scoped_release>());
+// }
+
 PYBIND11_MODULE(test_pybind, m) {
     m.doc() = "pybind11 example plugin"; // optional module docstring
 
-    m.def("sum_range", &sum_range, "A function which adds upp numbers from 0 up to and including high-1", py::call_guard<py::gil_scoped_release>());
+    m.def("sum_range", py::vectorize(sum_range));
 }

@@ -9,6 +9,7 @@ verify_ssl = true
 pybind11 = "*"
 numpy = "*"
 numba = "*"
+dask = "*"
 
 [requires]
 python_version = "3.8"
